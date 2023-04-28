@@ -1,6 +1,6 @@
 part of 'log_generator.dart';
 
-class Printer{
+class Printer {
   final String start;
   final String end;
 

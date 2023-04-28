@@ -5,17 +5,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:log_generator/log_generator.dart';
 
 void main() {
-  var log = [];
+  final log = [];
   const String message = 'message';
 
   void Function() overridePrint(void Function() testFn) => () {
-    var spec = ZoneSpecification(
-        print: (_, __, ___, String msg) {
+        final spec = ZoneSpecification(print: (_, __, ___, String msg) {
           log.add(msg);
-        }
-    );
-    return Zone.current.fork(specification: spec).run<void>(testFn);
-  };
+        });
+        return Zone.current.fork(specification: spec).run<void>(testFn);
+      };
 
   group('Print log as', () {
     test('error', overridePrint(() {

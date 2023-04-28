@@ -14,43 +14,39 @@ enum _LogColor {
   blue('\x1b[36m');
 
   final String ansiCode;
-  
+
   const _LogColor(this.ansiCode);
 }
 
-class LogGenerator{
+class LogGenerator {
   final Printer printer;
 
   LogGenerator({this.printer = const Printer()});
 
-  void _log(_LogColor color, Object object){
+  void _log(_LogColor color, Object object) {
     if (kDebugMode) {
-      print(
-          '${color.ansiCode}'
-              '${printer.start}$object${printer.end}'
-              '${_LogColor.reset.ansiCode}'
-      );
+      print('${color.ansiCode}'
+          '${printer.start}$object${printer.end}'
+          '${_LogColor.reset.ansiCode}');
     }
-    stdout.writeln(
-        '${color.ansiCode}'
-            '${printer.start}$object${printer.end}'
-            '${_LogColor.reset.ansiCode}'
-    );
+    stdout.writeln('${color.ansiCode}'
+        '${printer.start}$object${printer.end}'
+        '${_LogColor.reset.ansiCode}');
   }
 
-  void info(Object object){
+  void info(Object object) {
     _log(_LogColor.green, '[INFO] $object');
   }
 
-  void warning(Object object){
+  void warning(Object object) {
     _log(_LogColor.blue, '[WARNING] $object');
   }
 
-  void error(Object object){
+  void error(Object object) {
     _log(_LogColor.red, '[ERROR] $object');
   }
 
-  void analytics(Object object){
+  void analytics(Object object) {
     _log(_LogColor.yellow, '[ANALYTICS] $object');
   }
 }

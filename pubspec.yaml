@@ -1,7 +1,7 @@
 name: log_generator
-description: A new Flutter package project.
+description: A simple package to log generate.
 version: 0.0.1
-homepage:
+homepage: <em>https://github.com/edianio/log_generator</em>
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
@@ -14,7 +14,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
