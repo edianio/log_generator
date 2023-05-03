@@ -19,18 +19,18 @@ enum _LogColor {
 }
 
 class LogGenerator {
-  final Printer printer;
+  final Printer _printer;
 
-  LogGenerator({this.printer = const Printer()});
+  LogGenerator({Printer printer = const Printer()}) : _printer = printer;
 
   void _log(_LogColor color, Object object) {
     if (kDebugMode) {
       print('${color.ansiCode}'
-          '${printer.start}$object${printer.end}'
+          '${_printer.start}$object${_printer.end}'
           '${_LogColor.reset.ansiCode}');
     }
     stdout.writeln('${color.ansiCode}'
-        '${printer.start}$object${printer.end}'
+        '${_printer.start}$object${_printer.end}'
         '${_LogColor.reset.ansiCode}');
   }
 
