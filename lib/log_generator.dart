@@ -11,7 +11,8 @@ enum _LogColor {
   red('\x1b[31m'),
   yellow('\x1b[33m'),
   green('\x1b[32m'),
-  blue('\x1b[36m');
+  blue('\x1b[34m'),
+  cyan('\x1b[36m');
 
   final String ansiCode;
 
@@ -32,6 +33,10 @@ class LogGenerator {
     stdout.writeln('${color.ansiCode}'
         '${_printer.start}$object${_printer.end}'
         '${_LogColor.reset.ansiCode}');
+  }
+
+  void withTag({required Object tag, required Object object}) {
+    _log(_LogColor.cyan, '[$tag] $object');
   }
 
   void info(Object object) {

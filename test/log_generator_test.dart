@@ -6,6 +6,7 @@ import 'package:log_generator/log_generator.dart';
 
 void main() {
   final log = [];
+  const String tag = 'tag';
   const String message = 'message';
 
   void Function() overridePrint(void Function() testFn) => () {
@@ -18,6 +19,11 @@ void main() {
   tearDown(() => log.clear());
 
   group('Print log as', () {
+    test('function withTag', overridePrint(() {
+      LogGenerator().withTag(tag: tag, object: message);
+      expect(log, ['\x1B[36m[$tag] $message\x1B[m']);
+    }));
+
     test('error', overridePrint(() {
       LogGenerator().error(message);
       expect(log, ['\x1B[31m[ERROR] $message\x1B[m']);
@@ -30,7 +36,7 @@ void main() {
 
     test('warning', overridePrint(() {
       LogGenerator().warning(message);
-      expect(log, ['\x1B[36m[WARNING] $message\x1B[m']);
+      expect(log, ['\x1B[34m[WARNING] $message\x1B[m']);
     }));
 
     test('analytics', overridePrint(() {
