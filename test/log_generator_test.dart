@@ -36,12 +36,12 @@ void main() {
 
     test('warning', overridePrint(() {
       LogGenerator().warning(message);
-      expect(log, ['\x1B[34m[WARNING] $message\x1B[m']);
+      expect(log, ['\x1B[33m[WARNING] $message\x1B[m']);
     }));
 
     test('analytics', overridePrint(() {
       LogGenerator().analytics(message);
-      expect(log, ['\x1B[33m[ANALYTICS] $message\x1B[m']);
+      expect(log, ['\x1B[34m[ANALYTICS] $message\x1B[m']);
     }));
   });
 }

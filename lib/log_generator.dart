@@ -44,7 +44,7 @@ class LogGenerator {
   }
 
   void warning(Object object) {
-    _log(_LogColor.blue, '[WARNING] $object');
+    _log(_LogColor.yellow, '[WARNING] $object');
   }
 
   void error(Object object) {
@@ -52,6 +52,6 @@ class LogGenerator {
   }
 
   void analytics(Object object) {
-    _log(_LogColor.yellow, '[ANALYTICS] $object');
+    _log(_LogColor.blue, '[ANALYTICS] $object');
   }
 }
